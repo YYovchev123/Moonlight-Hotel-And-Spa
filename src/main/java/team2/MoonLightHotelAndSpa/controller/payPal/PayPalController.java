@@ -14,6 +14,7 @@ import java.net.URISyntaxException;
 
 @RestController
 @AllArgsConstructor
+@CrossOrigin
 public class PayPalController {
     private final PayPalService paypalService;
     private final RoomReservationService roomReservationService;

@@ -11,6 +11,6 @@ import java.util.List;
 @Repository
 public interface CarRepository extends JpaRepository<Car, Long> {
 
-    @Query("SELECT c FROM Car c WHERE c.carCategory.seats >= :seats AND c IN (SELECT ct.car FROM CarTransfer ct WHERE ct.date != :date) OR c NOT IN (SELECT ct.car FROM CarTransfer ct)")
+    @Query("SELECT c FROM Car c WHERE c.carCategory.seats >= :seats AND c IN (SELECT ct.car FROM CarTransfer ct WHERE ct.date != :date) OR c.carCategory.seats >= :seats AND c NOT IN (SELECT ct.car FROM CarTransfer ct)")
     List<Car> findAllAvailableCars(Instant date, int seats);
 }
